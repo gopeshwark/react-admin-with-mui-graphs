@@ -1,10 +1,9 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import { ColorModeContext, useMode } from "./theme/theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import AppTopbar from "./view/global/app-topbar";
 import AppSidebar from "./view/global/app-sidebar";
-// import { ProSidebarProvider } from "react-pro-sidebar";
 const Dashboard = lazy(() => import("./view/dashboard"));
 const Team = lazy(() => import("./view/team"));
 const Contacts = lazy(() => import("./view/contacts"));
@@ -19,16 +18,16 @@ const Geography = lazy(() => import("./view/geography"));
 
 function App() {
   const [theme, colorMode] = useMode();
+  const [isSidebar, setIsSidebar] = useState(true);
 
   return (
-    // <ProSidebarProvider>
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-          <AppSidebar />
+          <AppSidebar isSidebar={isSidebar} />
           <main className="content">
-            <AppTopbar />
+            <AppTopbar setIsSidebar={setIsSidebar} />
             <Suspense fallback={<div>Loading...</div>}>
               <Routes>
                 <Route path="/" element={<Dashboard />} />
@@ -48,7 +47,6 @@ function App() {
         </div>
       </ThemeProvider>
     </ColorModeContext.Provider>
-    // </ProSidebarProvider>
   );
 }
 
