@@ -15,6 +15,7 @@ const FAQ = lazy(() => import("./view/faq"));
 const Bar = lazy(() => import("./view/bar"));
 const Pie = lazy(() => import("./view/pie"));
 const Line = lazy(() => import("./view/line"));
+const Geography = lazy(() => import("./view/geography"));
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -40,6 +41,7 @@ function App() {
                 <Route path="/bar" element={<Bar />} />
                 <Route path="/pie" element={<Pie />} />
                 <Route path="/line" element={<Line />} />
+                <Route path="/geography" element={<Geography />} />
               </Routes>
             </Suspense>
           </main>
