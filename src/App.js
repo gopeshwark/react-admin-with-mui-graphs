@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import AppTopbar from "./view/global/app-topbar";
 import AppSidebar from "./view/global/app-sidebar";
 // import { ProSidebarProvider } from "react-pro-sidebar";
-const Dashboard = lazy(() => import("./view/dashboard/dashboard"));
+const Dashboard = lazy(() => import("./view/dashboard"));
 const Team = lazy(() => import("./view/team"));
 const Contacts = lazy(() => import("./view/contacts"));
 const Invoices = lazy(() => import("./view/invoices"));
